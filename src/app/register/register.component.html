@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RegisterPage</title>
+  <link rel="stylesheet" href="register.component.scss">
+  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      Cookbook
+    </div>
+  </header>
+
+  <div>
+    <h1>Register here:</h1> 
+  </div>
+  <div class="formularLogin">
+    <form [formGroup]="myFormRegister">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address </label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
+          formControlName="email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password </label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+          formControlName="password">
+      </div>
+      <small id="passwordHelp" class="text-danger">
+        Must be 6+ characters long.
+      </small>
+      <div class="form-group">
+        <label for="exampleInputPassword2">Confirm Password </label>
+        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password"
+          formControlName="confirmPassword" >
+      </div>
+      <div class="form-group">
+          <label for="name1">First name</label>
+          <input type="text" class="form-control" id="exampleName" placeholder="First Name" formControlName="firstName">
+      </div>
+
+      <div class="form-group">
+        <label for="name2">Last name</label>
+        <input type="text" class="form-control" id="exampleName2" placeholder="Last Name" formControlName="lastName">
+    </div>
+
+      <button type="submit" routerLink="" class="btnRegister" (click)="register()" [disabled]="myFormRegister.invalid" >Register</button>
+<!-- 
+      <div class="alert alert-danger" role="alert" *ngIf="confirmPassword.hasError('matching')">
+        This is a danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </div> -->
+
+    <p>Already have an account? Click here:</p>
+    <button routerLink="" type="button" class="btnLogin2">Login</button>
+    </form>
+  </div>
+</body>
+
+</html>

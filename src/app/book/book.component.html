@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book</title>
+  <link rel="stylesheet" href="book.component.scss">
+  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div>
+    <header>
+      <nav>
+      <a class="logo">
+        Cookbook
+      </a>
+      <a class="searchBar" style="float:right">
+  <mat-form-field class="example-form-field" appearance="outline">
+    <mat-label>Search by Name</mat-label>
+    <input matInput type="text" [(ngModel)]="nameSearchValue" />
+  
+    <button
+      mat-button
+      *ngIf="nameSearchValue"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="clearNameSearch()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  
+  <button mat-button (click)="searchByName()">Search</button>
+</a>
+  </nav>
+    </header>
+  </div>
+  
+  <h1>
+    Here are your recipes:
+  </h1>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+  
+    <!-- Instructions Column -->
+    <ng-container matColumnDef="instructions">
+      <th mat-header-cell *matHeaderCellDef>Instructions</th>
+      <td mat-cell *matCellDef="let element">{{ element.instructions }}</td>
+    </ng-container>
+  
+      <!-- Ingredients Column -->
+      <ng-container matColumnDef="ingredients">
+        <th mat-header-cell *matHeaderCellDef>Ingredients</th>
+        <td mat-cell *matCellDef="let element">{{ element.ingredients }}</td>
+      </ng-container> 
+  
+    <!-- Time Column -->
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef>Cooking Time</th>
+      <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-flat-button color="warn" (click)="onDelete(row)">
+          Delete
+        </button>
+        <button
+          style="margin-left: 2px"
+          mat-flat-button
+          color="accent"
+          (click)="onEdit(row)"
+        >
+          Edit
+      </button>
+        
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+ <div >
+  <button mat-raised-button color="primary" (click)="openDialog()">
+    Add recipe
+  </button>
+  <button mat-raised-button routerLink="" click="logout()">Logout</button>
+  </div> 
+</body>
+</html>

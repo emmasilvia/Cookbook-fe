@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoginPage</title>
+  <link rel="stylesheet" href="login.component.scss">
+  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      Cookbook
+    </div>
+  </header>
+
+  <div>
+    <h1>Login to your Cookbook</h1>
+  </div>
+
+  <div class="formularLogin">
+    <form [formGroup]="myForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address </label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
+          formControlName="email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password </label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+          formControlName="password">
+      </div>
+      <small id="passwordHelp" class="text-danger">
+        Must be 6+ characters long.
+      </small>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+      </div>
+
+      <button type="submit" routerLink="/book" class="btnLogin" (click)="login()" [disabled]="myForm.invalid">Login</button>
+    <p>Don't have an account? Click here:</p>
+    <button routerLink="/register" type="button" class="btnMakeAccount">Make an account</button>
+    </form>
+  </div>
+</body>
+
+</html>
+
+
+
+
